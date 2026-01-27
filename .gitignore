@@ -1,0 +1,45 @@
+# ===============================
+# JetBrains Plugin/Extension Projects
+# ===============================
+
+# JetBrains IDE project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Build output
+/out/
+/build/
+/out-tsc/
+/out/classes/
+
+# Gradle / Maven / other build systems
+.gradle/
+build/
+target/
+*.jar
+*.war
+*.ear
+
+# IntelliJ plugin specific
+/META-INF/plugin.xml
+/target/plugin-*.zip
+/target/classes/
+
+# JetBrains local caches and logs
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/shelf/
+.idea/**/usage.statistics.xml
+
+# Node / JavaScript (if plugin uses JS/TS)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db

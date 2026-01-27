@@ -1,0 +1,54 @@
+<idea-plugin>
+    <id>com.devtrackr.jetbrains</id>
+    <name>DevTrackr - Time Tracking for Developers</name>
+    <version>1.0.0</version>
+    <vendor email="support@devtrackr.com" url="https://devtrackr.com">DevTrackr</vendor>
+    
+    <icon>icon.png</icon>
+
+    <description><![CDATA[
+    <p>Track how long you work on projects and files in JetBrains IDEs.</p>
+    
+    <p>Boost your productivity with DevTrackr, the seamless time-tracking plugin for JetBrains IDEs. 
+    Track your coding sessions automatically, gain insights into your workflow, and optimize your 
+    development process — all without leaving your editor.</p>
+    
+    <p><b>Key Features:</b></p>
+    <ul>
+    <li>✅ Automatic time tracking for coding sessions</li>
+    <li>✅ Detailed insights on project time allocation</li>
+    <li>✅ Seamless integration with popular version control platforms</li>
+    <li>✅ Real-time productivity analytics and reports</li>
+    <li>✅ Lightweight and non-intrusive — no manual timers required</li>
+    </ul>
+    
+    <p>Visit <a href="https://devtrackr.com">devtrackr.com</a> for more information and updates.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    Initial release of DevTrackr for JetBrains IDEs.
+    ]]></change-notes>
+
+    <!-- Product and plugin compatibility requirements -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Application-level service -->
+        <applicationService serviceImplementation="com.devtrackr.services.ActivityTrackerService"/>
+        
+        <!-- Settings -->
+        <applicationConfigurable parentId="tools" instance="com.devtrackr.settings.DevTrackrSettingsConfigurable"
+                                 id="com.devtrackr.settings"
+                                 displayName="DevTrackr"/>
+        
+        <!-- Startup activity -->
+        <postStartupActivity implementation="com.devtrackr.DevTrackrPlugin"/>
+    </extensions>
+
+    <actions>
+        <action id="com.devtrackr.UpdateApiKey" class="com.devtrackr.actions.UpdateApiKeyAction"
+                text="DevTrackr - Set API Key" description="Set your DevTrackr API key">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
