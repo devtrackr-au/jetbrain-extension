@@ -1,10 +1,8 @@
 <idea-plugin>
     <id>com.devtrackr.jetbrains</id>
     <name>DevTrackr - Time Tracking for Developers</name>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <vendor email="support@devtrackr.com" url="https://devtrackr.com">DevTrackr</vendor>
-    
-    <icon>icon.png</icon>
 
     <description><![CDATA[
     <p>Track how long you work on projects and files in JetBrains IDEs.</p>
@@ -30,8 +28,9 @@
     ]]></change-notes>
 
     <!-- Product and plugin compatibility requirements -->
+    <!-- com.intellij.modules.platform provides compatibility with all JetBrains IDEs -->
     <depends>com.intellij.modules.platform</depends>
-
+    <depends optional="true" config-file="rider.xml">com.jetbrains.rider</depends>
     <extensions defaultExtensionNs="com.intellij">
         <!-- Application-level service -->
         <applicationService serviceImplementation="com.devtrackr.services.ActivityTrackerService"/>

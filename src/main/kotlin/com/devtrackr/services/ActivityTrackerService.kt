@@ -11,6 +11,7 @@ import com.intellij.openapi.editor.Document
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
+import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.vfs.VirtualFile
 import java.time.Instant
 import java.time.ZoneId
@@ -155,7 +156,7 @@ class ActivityTrackerService {
     private fun getProjectForFile(file: VirtualFile?): Project? {
         if (file == null) return null
         return ProjectManager.getInstance().openProjects.firstOrNull { project ->
-            com.intellij.openapi.vfs.VfsUtil.isAncestor(project.baseDir ?: return@firstOrNull false, file, false)
+            com.intellij.openapi.roots.ProjectRootManager.getInstance(project).fileIndex.isInContent(file)
         }
     }
 

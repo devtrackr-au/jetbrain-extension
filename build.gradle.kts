@@ -5,13 +5,15 @@ plugins {
 }
 
 group = "com.devtrackr"
-version = "1.0.0"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
 }
 
 intellij {
+    // Build against 2023.3 for maximum compatibility
+    // Plugins built against 2023.3 remain compatible with 2025+ IDEs
     version.set("2023.3")
     type.set("IC") // IntelliJ IDEA Community Edition (also compatible with Rider, PyCharm, WebStorm, etc.)
     // Git plugin is optional - plugin will work without it
@@ -32,9 +34,12 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("203") // Support from 2020.3 onwards (wider compatibility)
-        // untilBuild removed - plugin will be compatible with all future IDE versions
-        // If you want to limit compatibility, set to latest version like: untilBuild.set("242.*")
+        sinceBuild.set("203") // Support from 2020.3 onwards
+        // Support up to 2025.2.x (build 252.*)
+        // 2025.1 = 251, 2025.2 = 252
+        // Remove untilBuild to allow all future versions, or set to 252.* for 2025.2
+        untilBuild.set("252.*")
+        // Plugin icon - will be automatically picked up from META-INF/pluginIcon.png
     }
 
     signPlugin {
