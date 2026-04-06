@@ -1,0 +1,4 @@
+<idea-plugin>
+    <!-- Rider-specific configuration -->
+    <!-- This file is only loaded when Rider IDE is present -->
+</idea-plugin>
